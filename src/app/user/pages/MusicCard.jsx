@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FaPlay, FaPause, FaHeart } from 'react-icons/fa';
+import { FaPlay, FaPause, FaHeart, FaYoutube } from 'react-icons/fa';
 import '../css/User.css'
 import { listen, stopListen } from '../../../scripts/controller';
+import { FiDownload } from 'react-icons/fi';
 
 const MusicCard = ({
     lang,
@@ -76,6 +77,11 @@ const MusicCard = ({
         setLikeds(likedsMusics)
     }, [localChangeAlert])
 
+    const downloadMusic = () => {
+        if (!music) return;
+        window.open(`https://mashallah-mix-back.onrender.com/api/user/downloadMusic/${music?._id}`, "_blank");
+    };
+
     return (
         <div className="music-card-user">
 
@@ -92,6 +98,17 @@ const MusicCard = ({
                             <FaHeart />
                         </button>
                 }
+
+                {
+                    music?.hasYoutubeLink && <a
+                        href={music?.youtubeLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="music-youtube-link"
+                    >
+                        <FaYoutube />
+                    </a>
+                }
                 <img
                     src={music.musicCover}
                     alt={music.name}
@@ -104,9 +121,14 @@ const MusicCard = ({
                 </button>
             </div>
 
-            <div className="music-details">
-                <h3>{music.name}</h3>
-                <p>{music.artist}</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
+                <div className="music-details">
+                    <h3>{music.name}</h3>
+                    <p>{music.artist}</p>
+                </div>
+                <button className="volume-btn" onClick={downloadMusic} style={{ marginRight: '10px', marginTop: '13px' }}>
+                    <FiDownload />
+                </button>
             </div>
         </div>
     );

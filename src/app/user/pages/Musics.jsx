@@ -8,7 +8,7 @@ import MusicsLoading from '../../loadings/MusicsLoading';
 import Loading from '../../loadings/Loading';
 import { FiRefreshCw } from "react-icons/fi";
 import { listen } from '../../../scripts/controller';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaMusic } from 'react-icons/fa';
 
 const Musics = ({
   lang,
@@ -171,10 +171,12 @@ const Musics = ({
                         <h2>{language?.[lang].user.likeds.head}</h2>
                       </div>
 
-                      <button onClick={changePlayList} className='current-playlist'
-                        style={{ width: 'min-content', whiteSpace: 'nowrap', borderRadius: '10px', padding: '10px' }}>
-                        {language?.[lang].currentPlayList}
-                      </button>
+                      {
+                        dummyData?.length > 0 && <button onClick={changePlayList} className='current-playlist'
+                          style={{ width: 'min-content', whiteSpace: 'nowrap', borderRadius: '10px', padding: '10px' }}>
+                          {language?.[lang].currentPlayList}
+                        </button>
+                      }
                     </div>
                     :
                     <div className='section-main-head'>
@@ -201,33 +203,54 @@ const Musics = ({
               }
             </div>
 
-            <div className="music-grid">
-              {
-                dummyData.map(item => (
-                  <MusicCard
-                    key={item._id}
-                    lang={lang}
-                    setCurrentMusic={setCurrentMusic}
-                    currentMusic={currentMusic}
-                    music={item}
-                    playing={playing}
-                    setPlaying={setPlaying}
-                    intervalRef={intervalRef}
-                    audioRef={audioRef}
-                    currentMusicRef={currentMusicRef}
-                    duration={duration}
-                    setDuration={setDuration}
-                    id={id} setId={setId}
-                    seconds={seconds}
-                    setSeconds={setSeconds}
-                    playingId={playingId}
-                    setPlayingId={setPlayingId}
-                    playList={playList}
-                    setPlayList={setPlayList}
-                  />
-                ))
-              }
-            </div>
+            {
+              dummyData?.length === 0 ? <div className="playlist-empty">
+
+                <FaMusic />
+
+                <h3>
+                  {
+                    language?.[lang]?.playList?.noPlaylistsTitle
+                  }
+                </h3>
+
+                <p>
+                  {
+                    language?.[lang]?.playList?.noPlaylistsText
+                  }
+                </p>
+
+              </div>
+                :
+                <div className="music-grid">
+                  {
+                    dummyData.map(item => (
+                      <MusicCard
+                        key={item._id}
+                        lang={lang}
+                        setCurrentMusic={setCurrentMusic}
+                        currentMusic={currentMusic}
+                        music={item}
+                        playing={playing}
+                        setPlaying={setPlaying}
+                        intervalRef={intervalRef}
+                        audioRef={audioRef}
+                        currentMusicRef={currentMusicRef}
+                        duration={duration}
+                        setDuration={setDuration}
+                        id={id} setId={setId}
+                        seconds={seconds}
+                        setSeconds={setSeconds}
+                        playingId={playingId}
+                        setPlayingId={setPlayingId}
+                        playList={playList}
+                        setPlayList={setPlayList}
+                      />
+                    ))
+                  }
+                </div>
+            }
+
             {
               page < totalPages && playListPages?.currentPlayList === '' && (
                 <div className='more-box'>

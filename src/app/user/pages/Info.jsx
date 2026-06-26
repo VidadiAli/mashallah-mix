@@ -19,10 +19,8 @@ const Info = ({ lang }) => {
           <h3>{language?.[lang].footer.socials}</h3>
 
           <div className="social-links">
-            <a href="#" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="#" target="_blank" rel="noreferrer">YouTube</a>
-            <a href="#" target="_blank" rel="noreferrer">Telegram</a>
-            <a href="#" target="_blank" rel="noreferrer">TikTok</a>
+            <a href="https://youtube.com/@masallahmix?si=i2dTfNSHcggevLU9" target="_blank" rel="noreferrer">YouTube</a>
+            <a href="https://www.tiktok.com/@masallahmix?_r=1&_t=ZS-97OkDwTg6IW" target="_blank" rel="noreferrer">TikTok</a>
           </div>
         </div>
       </div>

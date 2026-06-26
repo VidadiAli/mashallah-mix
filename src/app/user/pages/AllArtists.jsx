@@ -6,6 +6,8 @@ import { listen } from '../../../scripts/controller';
 import { useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { language } from '../../../scripts/language';
+import MiniLoading from '../../loadings/MiniLoading';
+import Loading from '../../loadings/Loading';
 
 const AllArtists = ({
   lang,
@@ -35,10 +37,12 @@ const AllArtists = ({
   const [artists, setArtists] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
-  const pageSize = 30;
+  const [loading, setLoading] = useState(null);
+  const pageSize = 3;
 
   const getArtists = async () => {
     try {
+      setLoading(true);
       const res = await api.get('/user/getArtists', {
         params: {
           page, pageSize
@@ -49,6 +53,9 @@ const AllArtists = ({
       setTotalPages(res?.data?.totalPages || 1);
     } catch (error) {
       console.log(error)
+    }
+    finally {
+      setLoading(false)
     }
   };
 
@@ -82,7 +89,7 @@ const AllArtists = ({
       else {
         setPlayList(prev => [...prev, ...newPlayList]);
         setDummyData(prev => [...prev, ...newPlayList]);
-        listen([...prev, ...newPlayList][0], setCurrentMusic, setDuration, id, setId, setSeconds, seconds, audioRef, currentMusicRef, intervalRef, setPlayingId, setPlaying, [...playList, ...newPlayList]);
+        listen([...playList, ...newPlayList][0], setCurrentMusic, setDuration, id, setId, setSeconds, seconds, audioRef, currentMusicRef, intervalRef, setPlayingId, setPlaying, [...playList, ...newPlayList]);
       }
 
     } catch (error) {
@@ -166,7 +173,9 @@ const AllArtists = ({
         totalPages={totalPages}
         onPageChange={setPage}
       />
-
+      {
+        loading && <Loading />
+      }
     </div>
   );
 

@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { listen, nextMusic, previusMusic, stopListen } from "../../../scripts/controller";
 import AddingToPlayList from "./AddingToPlayList";
+import { FiDownload } from "react-icons/fi";
 
 const MusicController = ({
     lang,
@@ -75,6 +76,12 @@ const MusicController = ({
         }
     }, [seconds, id, duration]);
 
+
+    const downloadMusic = () => {
+        if (!music) return;
+        window.open(`https://mashallah-mix-back.onrender.com/api/user/downloadMusic/${music?._id}`, "_blank");
+    };
+
     return (
         music &&
         <div
@@ -106,7 +113,7 @@ const MusicController = ({
                         >
                             <FaPlusCircle />
                         </button>
-                        
+
                     </div>
 
                 </div>
@@ -148,8 +155,8 @@ const MusicController = ({
                         </a>
                     }
 
-                    <button className="volume-btn">
-                        <FaVolumeUp />
+                    <button className="volume-btn" onClick={downloadMusic}>
+                        <FiDownload />
                     </button>
 
                 </div>

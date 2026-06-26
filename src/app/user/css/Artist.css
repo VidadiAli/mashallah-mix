@@ -1,0 +1,201 @@
+.artist {
+    grid-column: 1 span;
+    background-color: var(--bg);
+    height: 100vh;
+    overflow: hidden;
+    display: block;
+}
+
+
+.artist-info {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+}
+
+.artist-bubbles {
+    position: relative;
+    width: 100%;
+    height: 260px;
+}
+
+.artist-bubble {
+    position: absolute;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .15);
+    box-shadow: 0 0 30px rgba(139, 92, 246, .25);
+}
+
+.artist-bubble.center {
+    width: 120px;
+    height: 120px;
+    left: 50%;
+    top: 50px;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+.artist-bubble.left {
+    width: 90px;
+    height: 90px;
+    left: 20px;
+    top: 90px;
+    z-index: 2;
+}
+
+.artist-bubble.right {
+    width: 90px;
+    height: 90px;
+    right: 20px;
+    top: 90px;
+    z-index: 2;
+}
+
+.not-3 {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+.is-2 {
+    top: 30px !important;
+}
+
+.artist-name {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+
+    text-align: center;
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, .3),
+        0 0 30px rgba(139, 92, 246, .4);
+    text-transform: capitalize;
+}
+
+
+
+
+.artist-musics {
+    width: 100%;
+    height: calc(100vh - 300px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    position: relative;
+}
+
+.artist-music-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px 10px;
+
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 12px;
+
+    transition: .3s ease;
+}
+
+.artist-music-item:hover,
+.hover-style {
+    background: rgba(251, 191, 36, .08);
+    border-color: rgba(251, 191, 36, .25);
+    transform: translateX(4px);
+}
+
+.artist-music-cover {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.artist-music-info h4 {
+    font-size: .85rem;
+    margin: 0;
+    color: #fff;
+}
+
+.artist-music-info p {
+    font-size: .7rem;
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+
+.current-playlist {
+    padding: 16px;
+    font-size: .75rem;
+    font-weight: 600;
+
+    color: #fff;
+
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .10);
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition: .3s ease;
+
+    box-shadow: 0 0 20px rgba(251, 191, 36, .08);
+}
+
+.current-playlist:hover {
+    background: linear-gradient(135deg, #fde68a, #fbbf24);
+    color: #111827;
+
+    border-color: transparent;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 0 25px rgba(251, 191, 36, .35);
+}
+
+.current-playlist:active {
+    transform: scale(.97);
+}
+
+
+
+/* @media(max-width: 1000px) {
+    .artist {
+        grid-column: 2 span;
+    }
+} */
+
+
+
+@media(max-width: 750px) {
+    .artist {
+        width: 60%;
+        position: absolute;
+        left: -100%;
+        transition: .4s;
+        z-index: 10000000;
+    }
+}
+
+@media(max-width: 600px) {
+    .artist {
+        width: 80%;
+    }
+}

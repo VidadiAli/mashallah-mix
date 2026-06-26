@@ -1,0 +1,198 @@
+.profile-loading {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+
+    position: relative;
+
+    background: var(--bg);
+
+    overflow: hidden;
+}
+
+.profile-loading::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(124,58,237,.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(6,182,212,.15),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(251,191,36,.12),
+            transparent 40%
+        );
+}
+
+.profile-loading::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.03) 1px,
+            transparent 1px
+        );
+
+    background-size: 40px 40px;
+}
+
+.profile-loading-card {
+    position: relative;
+    z-index: 5;
+
+    width: 100%;
+    max-width: 650px;
+
+    padding: 35px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.03)
+        );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(30px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.4);
+}
+
+.profile-loading-avatar {
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    margin: 0 auto 25px;
+}
+
+.profile-loading-title {
+    width: 220px;
+    height: 26px;
+
+    margin: 0 auto 12px;
+
+    border-radius: 12px;
+}
+
+.profile-loading-subtitle {
+    width: 160px;
+    height: 16px;
+
+    margin: 0 auto 35px;
+
+    border-radius: 10px;
+}
+
+.profile-loading-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.profile-loading-input {
+    width: 100%;
+    height: 60px;
+
+    border-radius: 18px;
+}
+
+.profile-loading-actions {
+    display: flex;
+    gap: 16px;
+
+    margin-top: 10px;
+}
+
+.profile-loading-btn {
+    flex: 1;
+    height: 58px;
+
+    border-radius: 18px;
+}
+
+.skeleton {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+.skeleton::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -150%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.18),
+            transparent
+        );
+
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+
+    100% {
+        left: 150%;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .profile-loading {
+        padding: 20px;
+    }
+
+    .profile-loading-card {
+        padding: 24px;
+    }
+
+    .profile-loading-actions {
+        flex-direction: column;
+    }
+
+    .profile-loading-avatar {
+        width: 75px;
+        height: 75px;
+    }
+
+}

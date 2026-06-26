@@ -1,0 +1,62 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(251,191,36,.7);
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+}
+
+:root {
+
+    --primary: #8b5cf6;
+    --primary-hover: #7c3aed;
+
+    --secondary: #06b6d4;
+
+    --success: #22c55e;
+    --success-light: #4ade80;
+
+    --gold: #fbbf24;
+    --gold-light: #fde68a;
+
+    --danger: #ef4444;
+
+    --bg: #050816;
+    --bg-secondary: #0f172a;
+
+    --card-bg: rgba(15, 23, 42, .55);
+
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+
+    --border: rgba(255,255,255,.08);
+
+    --glass: rgba(255,255,255,.05);
+
+    --shadow-sm: 0 10px 30px rgba(0,0,0,.25);
+    --shadow-md: 0 20px 50px rgba(0,0,0,.4);
+
+    --radius-sm: 14px;
+    --radius-md: 20px;
+    --radius-lg: 32px;
+
+    --transition: .35s ease;
+}

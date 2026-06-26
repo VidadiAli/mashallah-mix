@@ -1,0 +1,34 @@
+.mini-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(15, 23, 42, .35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    z-index: 10;
+}
+
+.mini-spinner {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .15);
+    border-top: 3px solid #fbbf24;
+
+    animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

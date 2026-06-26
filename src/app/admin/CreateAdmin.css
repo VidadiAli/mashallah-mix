@@ -1,0 +1,193 @@
+.create-admin {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background:
+        radial-gradient(circle at top left,
+            rgba(124, 58, 237, .25),
+            transparent 30%),
+        radial-gradient(circle at bottom right,
+            rgba(6, 182, 212, .2),
+            transparent 30%),
+        var(--bg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-admin-card {
+    width: 100%;
+    max-width: 950px;
+
+    background: var(--card-bg);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    padding: 40px;
+
+    box-shadow: var(--shadow-md);
+}
+
+.form-header {
+    margin-bottom: 35px;
+}
+
+.form-header h2 {
+    color: var(--text-primary);
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.password-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    height: 58px;
+
+    border-radius: 14px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255, 255, 255, .03);
+
+    color: var(--text-primary);
+
+    padding: 0 18px;
+
+    transition: var(--transition);
+}
+
+.form-group input::placeholder {
+    color: var(--text-secondary);
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(124, 58, 237, .15);
+
+    background: rgba(255, 255, 255, .05);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 60px;
+}
+
+.password-toggle {
+    position: absolute;
+
+    right: 18px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background: transparent;
+    border: none;
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-toggle:hover {
+    color: var(--text-primary);
+}
+
+.submit-btn {
+    width: 100%;
+    height: 58px;
+
+    margin-top: 30px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(135deg,
+            var(--primary),
+            var(--secondary));
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(124, 58, 237, .35);
+}
+
+.err-msg {
+    color: red !important;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+@media (max-width: 768px) {
+
+    .create-admin-card {
+        padding: 25px;
+    }
+
+    .form-grid,
+    .password-section {
+        grid-template-columns: 1fr;
+    }
+
+    .form-header h2 {
+        font-size: 28px;
+    }
+}

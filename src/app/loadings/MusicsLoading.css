@@ -1,0 +1,197 @@
+.musics-loading-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 30px;
+    overflow: hidden;
+    background: var(--bg);
+}
+
+.loading-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(124,58,237,.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(6,182,212,.15),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(251,191,36,.12),
+            transparent 40%
+        );
+}
+
+.loading-bg::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.03) 1px,
+            transparent 1px
+        );
+
+    background-size: 40px 40px;
+}
+
+.loading-header {
+    width: 260px;
+    height: 42px;
+    border-radius: 14px;
+    margin-bottom: 35px;
+}
+
+.loading-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(340px, 1fr)
+    );
+    gap: 22px;
+}
+
+.loading-card {
+    position: relative;
+
+    padding: 20px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.06),
+            rgba(255,255,255,.02)
+        );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 25px rgba(124,58,237,.08);
+}
+
+.loading-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.loading-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 18px;
+    flex-shrink: 0;
+}
+
+.loading-info {
+    flex: 1;
+}
+
+.loading-title {
+    width: 80%;
+    height: 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.loading-subtitle {
+    width: 50%;
+    height: 14px;
+    border-radius: 10px;
+}
+
+.loading-bottom {
+    margin-top: 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.loading-play {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.loading-progress {
+    flex: 1;
+    height: 8px;
+    border-radius: 999px;
+}
+
+.loading-time {
+    width: 45px;
+    height: 14px;
+    border-radius: 8px;
+}
+
+.skeleton {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+.skeleton::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -150%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.15),
+            transparent
+        );
+
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        left: 150%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .musics-loading-page {
+        padding: 20px;
+    }
+
+    .loading-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .loading-image {
+        width: 75px;
+        height: 75px;
+    }
+}

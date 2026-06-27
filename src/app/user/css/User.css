@@ -281,6 +281,7 @@
 .music-details {
     padding: 16px;
     text-transform: capitalize;
+    width: calc(100% - 50px);
 }
 
 .music-details h3 {
@@ -571,7 +572,7 @@
     height: 22px;
     border: 1px solid white;
     position: relative;
-    top: 5px;
+    top: 2px;
     cursor: pointer;
 }
 
@@ -994,6 +995,40 @@
     font-size: 14px;
 }
 
+.playlist-controller-btns {
+    display: flex;
+    gap: 5px;
+}
+
+.playlist-controller-btns button {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transform: translateY(0px);
+    transition: .3s;
+    color: white;
+    font-size: 13px;
+}
+
+.playlist-controller-btns button:hover {
+    transform: translateY(-3px);
+}
+
+.edit-playlist {
+    background-color: rgba(139, 92, 246, .18);
+}
+
+.delete-playlist {
+    background-color: #f87171;
+    font-size: 11px !important;
+}
+
 .playlist-empty {
 
     min-height: 420px;
@@ -1217,6 +1252,9 @@
         font-size: 20px;
     }
 
+    .music-details {
+        width: calc(100% - 42px);
+    }
 
     .music-controller {
         padding: 12px 30px;

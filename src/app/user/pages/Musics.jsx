@@ -38,7 +38,7 @@ const Musics = ({
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(false)
-  const pageSize = 2;
+  const pageSize = 25;
 
   const callDummy = async (isFirst) => {
     try {
@@ -145,6 +145,19 @@ const Musics = ({
     artist.style.left = `calc(100% - ${artist.offsetWidth}px)`
   }
 
+  useEffect(() => {
+    if (innerWidth > 1000) return;
+    const menu = document.querySelector('.menu');
+    if (!menu) return;
+    menu.classList.remove('menu-move')
+  }, []);
+
+
+  // useEffect(() => {
+  //   if (window.location.href.includes('/likeds')) return;
+  //   callDummy(true)
+  // }, []);
+
   return (
 
     <div className="musics">
@@ -198,7 +211,7 @@ const Musics = ({
               </div>
               {
                 innerWidth < 750 && currentMusic && <button className='menu-bar' onClick={moveArtist}>
-                  <FaBars className='menu-bar-icon' />
+                  <FaMusic className='menu-bar-icon' />
                 </button>
               }
             </div>

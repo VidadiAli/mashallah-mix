@@ -126,7 +126,7 @@ const MusicCard = ({
                     <h3>{music.name}</h3>
                     <p>{music.artist}</p>
                 </div>
-                <button className="volume-btn" onClick={downloadMusic} style={{ marginRight: '10px', marginTop: '13px' }}>
+                <button className="volume-btn" onClick={downloadMusic} style={{position: 'relative', right: '10px', top: '13px' }}>
                     <FiDownload />
                 </button>
             </div>

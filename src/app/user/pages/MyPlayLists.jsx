@@ -4,10 +4,15 @@ import {
   FaPlay,
   FaListUl,
   FaCompactDisc,
-  FaBars
+  FaBars,
+  FaEdit,
+  FaTrash
 } from "react-icons/fa";
 import { language } from "../../../scripts/language";
 import { listen } from "../../../scripts/controller";
+import Loading from "../../loadings/Loading";
+import Alert from "../../alert/Alert";
+import AddingToPlayList from "./AddingToPlayList";
 
 const MyPlayLists = ({
   lang,
@@ -35,30 +40,43 @@ const MyPlayLists = ({
 }) => {
 
   const [playLists, setPlayLists] = useState([]);
+  const [loading, setLoading] = useState(null);
+  const [item, setItem] = useState(null);
+  const [editItem, setEditItem] = useState(null);
+
+  const [alert, setAlert] = useState({
+    type: '',
+    response: '',
+    isQuestion: ''
+  });
+
+  const [answer, setAnswer] = useState(null);
+  const [showAlert, setShowAlert] = useState('')
 
   useEffect(() => {
+    const loadPlaylists = () => {
+      const storage = localStorage.getItem("myPlayLists");
 
-    const storage =
-      localStorage.getItem("myPlayLists");
-
-    if (!storage) {
-      setPlayLists([]);
-      return;
-    }
-
-    try {
-      const data = JSON.parse(storage);
-
-      if (Array.isArray(data)) {
-        setPlayLists(data);
-      } else {
+      if (!storage) {
         setPlayLists([]);
+        return;
       }
 
-    } catch {
-      setPlayLists([]);
-    }
+      try {
+        const data = JSON.parse(storage);
+        setPlayLists(Array.isArray(data) ? data : []);
+      } catch {
+        setPlayLists([]);
+      }
+    };
 
+    loadPlaylists();
+
+    window.addEventListener("myPlayListsChanged", loadPlaylists);
+
+    return () => {
+      window.removeEventListener("myPlayListsChanged", loadPlaylists);
+    };
   }, []);
 
 
@@ -78,6 +96,64 @@ const MyPlayLists = ({
     if (!artist) return;
     artist.style.left = `calc(100% - ${artist.offsetWidth}px)`
   }
+
+
+
+  const deleteList = (list) => {
+    setAlert({
+      type: 'warning',
+      response: 'Bu playlisti silməyə əminsiz?',
+      isQuestion: true
+    });
+    setItem(list);
+    setShowAlert('show-alert')
+  };
+
+
+  useEffect(() => {
+    const removeList = async () => {
+      if (answer && item) {
+        try {
+          setLoading(true)
+
+          const storage = localStorage.getItem('myPlayLists');
+          if (!storage) return;
+
+          const myPlaylists = JSON.parse(storage);
+          const indexOfList = myPlaylists.findIndex(
+            playlist => playlist.name === item.name
+          );
+
+          if (indexOfList === -1) return;
+
+          myPlaylists?.splice(indexOfList, 1);
+
+          localStorage.setItem('myPlayLists', JSON.stringify(myPlaylists));
+
+          setPlayLists(myPlaylists);
+
+          setAlert({
+            type: 'success',
+            response: 'Playlist uğurla silindi',
+            isQuestion: false
+          });
+
+        } catch (error) {
+          setAlert({
+            type: 'error',
+            response: error.response?.data?.message ||
+              error.message,
+            isQuestion: false
+          });
+        }
+        finally {
+          setLoading(false)
+        }
+      }
+    }
+
+    removeList()
+  }, [answer])
 
   return (
 
@@ -109,7 +185,7 @@ const MyPlayLists = ({
 
         {
           innerWidth < 750 && currentMusic && <button className='menu-bar' onClick={moveArtist}>
-            <FaBars className='menu-bar-icon' />
+            <FaMusic className='menu-bar-icon' />
           </button>
         }
       </div>
@@ -178,9 +254,20 @@ const MyPlayLists = ({
 
                     <div className="playlist-body">
 
-                      <h3>
-                        {playlist.name}
-                      </h3>
+                      <div style={{ display: 'flex', gap: '5px', justifyContent: 'space-between' }}>
+                        <h3>
+                          {playlist.name}
+                        </h3>
+
+                        <div className="playlist-controller-btns">
+                          <button className="edit-playlist" onClick={() => setEditItem(playlist)} >
+                            <FaEdit />
+                          </button>
+                          <button className="delete-playlist" onClick={() => deleteList(playlist)}>
+                            <FaTrash />
+                          </button>
+                        </div>
+                      </div>
 
                       <span>
 
@@ -207,6 +294,26 @@ const MyPlayLists = ({
 
           </div>
 
+      }
+
+      {
+        alert?.type && <Alert
+          type={alert.type}
+          response={alert.response}
+          isQuestion={alert.isQuestion}
+          setAnswer={setAnswer}
+          showAlert={showAlert}
+          setShowAlert={setShowAlert}
+        />
+      }
+
+      {
+        loading && <Loading />
+      }
+
+
+      {
+        editItem && <AddingToPlayList setShowAdding={setEditItem} editItem={editItem} mainPlayList={playLists} lang={lang} />
       }
 
     </div>

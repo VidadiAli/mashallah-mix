@@ -9,10 +9,11 @@ import {
 import { createPortal } from 'react-dom'
 import { language } from '../../../scripts/language';
 
-const AddingToPlayList = ({ setShowAdding, music, lang }) => {
+const AddingToPlayList = ({ setShowAdding, music = null, editItem = null, mainPlayList = null, lang }) => {
     const [createNew, setCreateNew] = useState(false);
     const [myPlayLists, setMyPlayLists] = useState([]);
     const [playListName, setPlayListName] = useState('');
+    const [updatingList, setUpdatingList] = useState([]);
     const [musicId, setMusicId] = useState({
         musicId: '',
         listIndex: []
@@ -34,8 +35,8 @@ const AddingToPlayList = ({ setShowAdding, music, lang }) => {
         const playLists = localStorage.getItem('myPlayLists') ?
             JSON.parse(localStorage.getItem('myPlayLists')) : [];
 
-        const names = playLists?.length > 0 ? playLists?.map(e => e.name) : [];
-        if (names?.includes(playListName)) {
+        const names = playLists?.length > 0 ? playLists?.map(e => e.name?.toLowerCase()) : [];
+        if (names?.includes(playListName?.toLowerCase())) {
             setMsg({
                 msg: `${language?.[lang]?.playList?.msg?.errorExsistName}`,
                 type: 'error'
@@ -52,6 +53,8 @@ const AddingToPlayList = ({ setShowAdding, music, lang }) => {
         playLists.push(newItem);
 
         localStorage.setItem('myPlayLists', JSON.stringify(playLists));
+
+        window.dispatchEvent(new Event("myPlayListsChanged"));
 
         setMsg({
             msg: `${language?.[lang]?.playList?.msg?.successCreate}`,
@@ -95,6 +98,8 @@ const AddingToPlayList = ({ setShowAdding, music, lang }) => {
 
         localStorage.setItem('myPlayLists', JSON.stringify(list));
 
+        window.dispatchEvent(new Event("myPlayListsChanged"));
+
         setMsg({
             msg: `${language?.[lang]?.playList?.msg?.successAdding}`,
             type: 'success'
@@ -131,6 +136,66 @@ const AddingToPlayList = ({ setShowAdding, music, lang }) => {
     }, [music])
 
 
+    const editPlayList = () => {
+        if (!editItem || !mainPlayList) return;
+        const names = mainPlayList?.
+            map(e => e.name?.toLowerCase() != editItem?.name?.toLowerCase() ? e.name?.toLowerCase() : null).
+            filter(e => e != null);
+
+        if (names?.includes(playListName?.toLowerCase())) {
+            setMsg({
+                msg: `${language?.[lang]?.playList?.msg?.errorExsistName}`,
+                type: 'error'
+            });
+            return;
+        }
+
+        if (updatingList?.length == 0) {
+            setMsg({
+                msg: `${language?.[lang]?.playList?.msg?.errorListLength}`,
+                type: 'error'
+            });
+            return;
+        }
+
+        const newItem = {
+            name: playListName,
+            list: updatingList
+        };
+
+        const indexOfList = mainPlayList.findIndex(e => e?.name === editItem?.name);
+        mainPlayList.splice(indexOfList, 1);
+        mainPlayList.push(newItem);
+
+        localStorage.setItem('myPlayLists', JSON.stringify(mainPlayList));
+
+        setMsg({
+            msg: `${language?.[lang]?.playList?.msg?.successUpdating}`,
+            type: 'success'
+        });
+
+        setTimeout(() => {
+            setShowAdding(null);
+            window.dispatchEvent(new Event("myPlayListsChanged"));
+        }, 600);
+    }
+
+    const removeFromList = (item) => {
+        if (!editItem) return;
+        const newList = updatingList?.filter(e => e._id != item?._id);
+        setUpdatingList(newList);
+        setMsg({
+            msg: '',
+            type: ''
+        });
+    }
+
+    useEffect(() => {
+        if (!editItem) return;
+        setPlayListName(editItem?.name);
+        setUpdatingList(editItem?.list);
+    }, [editItem]);
+
     return createPortal(
         <div className="playlist-modal" >
 
@@ -141,19 +206,19 @@ const AddingToPlayList = ({ setShowAdding, music, lang }) => {
                         <h3>
                             <FaMusic />
                             {
-                                language?.[lang]?.playList?.add
+                                editItem ? language?.[lang]?.playList?.update?.updateHead : language?.[lang]?.playList?.add
                             }
                         </h3>
 
                         <span style={{ color: 'white', display: 'flex', gap: '10px' }}>
-                            <span style={{ color: 'var(--gold)' }}>{music?.name}</span>
-                            / {music?.artist}
-                        </span>;
+                            <span style={{ color: 'var(--gold)' }}>{editItem ? editItem?.name : music?.name}</span>
+                            {!editItem && <> {" / "} {music?.artist} </>}
+                        </span>
                     </div>
 
                     <button
                         className="close-btn"
-                        onClick={() => setShowAdding(false)}
+                        onClick={() => setShowAdding(null)}
                     >
                         <FaTimes />
                     </button>
@@ -167,21 +232,23 @@ const AddingToPlayList = ({ setShowAdding, music, lang }) => {
                     </p>
                 }
 
-                <div className="playlist-create-trigger">
+                {
+                    !editItem && <div className="playlist-create-trigger">
 
-                    <button
-                        onClick={() => setCreateNew(true)}
-                    >
-                        <FaPlus />
-                        {
-                            language?.[lang]?.playList?.create
-                        }
-                    </button>
+                        <button
+                            onClick={() => setCreateNew(true)}
+                        >
+                            <FaPlus />
+                            {
+                                language?.[lang]?.playList?.create
+                            }
+                        </button>
 
-                </div>
+                    </div>
+                }
 
                 {
-                    createNew ?
+                    createNew || editItem ?
 
                         <div className="playlist-create">
 
@@ -189,19 +256,67 @@ const AddingToPlayList = ({ setShowAdding, music, lang }) => {
                                 type="text"
                                 placeholder="Playlist name..."
                                 value={playListName}
-                                onChange={(e) =>
-                                    setPlayListName(e.target.value)
+                                onChange={(e) => {
+                                    setPlayListName(e.target.value);
+                                    setMsg({
+                                        msg: '',
+                                        type: ''
+                                    })
+                                }
                                 }
                             />
 
-                            <button
-                                className="create-btn"
-                                onClick={createPlayList}
-                            >
-                                {
-                                    language?.[lang]?.playList?.createBtn
-                                }
-                            </button>
+                            {
+                                editItem && <div className='playlist-list'>
+                                    {
+                                        updatingList?.map((item, index) => {
+                                            return <div
+                                                key={index}
+                                                className="playlist-item"
+                                            >
+                                                <div className='playlist-item-info'
+                                                    style={{ display: 'flex', flexDirection: 'column', gap: '5px', alignItems: 'self-start' }}>
+
+                                                    <h4>{item.name}</h4>
+                                                    <span>{item?.artist}</span>
+
+                                                </div>
+
+                                                <button
+                                                    className="playlist-add-btn"
+                                                    onClick={() =>
+                                                        removeFromList(item)
+                                                    }
+                                                >
+                                                    <FaTimes />
+                                                </button>
+
+                                            </div>
+                                        })
+                                    }
+                                </div>
+                            }
+
+                            {
+                                editItem ?
+                                    <button
+                                        className="create-btn"
+                                        onClick={editPlayList}
+                                    >
+                                        {
+                                            language?.[lang]?.playList?.update?.updateHead
+                                        }
+                                    </button>
+                                    :
+                                    <button
+                                        className="create-btn"
+                                        onClick={createPlayList}
+                                    >
+                                        {
+                                            language?.[lang]?.playList?.createBtn
+                                        }
+                                    </button>
+                            }
 
                         </div>
 

@@ -37,7 +37,7 @@ const Main = () => {
         setTotalPages: setTotalPagesForPL,
         currentPlayList: currentPlayList,
         setCurrentPlayList: setCurrentPlayList,
-        pageSize: 1
+        pageSize: 15
     };
 
     useEffect(() => {

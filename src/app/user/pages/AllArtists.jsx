@@ -4,7 +4,7 @@ import Pagination from '../../admin/pages/Pagination';
 import '../css/Menu.css'
 import { listen } from '../../../scripts/controller';
 import { useNavigate } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaMusic } from 'react-icons/fa';
 import { language } from '../../../scripts/language';
 import MiniLoading from '../../loadings/MiniLoading';
 import Loading from '../../loadings/Loading';
@@ -38,7 +38,7 @@ const AllArtists = ({
   const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(null);
-  const pageSize = 3;
+  const pageSize = 15;
 
   const getArtists = async () => {
     try {
@@ -139,7 +139,7 @@ const AllArtists = ({
         </div>
         {
           innerWidth < 750 && currentMusic && <button className='menu-bar' onClick={moveArtist}>
-            <FaBars className='menu-bar-icon' />
+            <FaMusic className='menu-bar-icon' />
           </button>
         }
       </div>

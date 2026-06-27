@@ -146,6 +146,7 @@ const Musics = () => {
                         response: 'Parça uğurla silindi',
                         isQuestion: false
                     });
+                    window.location.reload();
 
                 } catch (error) {
                     setAlert({

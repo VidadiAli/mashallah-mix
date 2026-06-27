@@ -123,7 +123,7 @@ const Musics = () => {
 
     const deleteMusic = (music) => {
         setAlert({
-            type: 'success',
+            type: 'warning',
             response: 'Bu parçanı silməyə əminsiz?',
             isQuestion: true
         });

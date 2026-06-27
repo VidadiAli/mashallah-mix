@@ -11,10 +11,11 @@ const Routers = () => {
             <Route path="/create-admin" element={<CreateAdmin />} />
             <Route path="/login-admin" element={<Login />} />
             <Route path="/admin/*" element={<AdminRoutes />} />
-            <Route path='/' element={<Main/>} />
-            <Route path='/likeds' element={<Main/>} />
-            <Route path='/artists' element={<Main/>} />
-            <Route path='/my-lists' element={<Main/>} />
+            <Route path='/' element={<Main />} />
+            <Route path='/likeds' element={<Main />} />
+            <Route path='/artists' element={<Main />} />
+            <Route path='/my-lists' element={<Main />} />
+            <Route path='/remix' element={<Main />} />
         </Routes>
     )
 }

@@ -4,6 +4,7 @@ import '../css/User.css'
 import Musics from '../pages/Musics'
 import AllArtists from '../pages/AllArtists'
 import MyPlayLists from '../pages/MyPlayLists'
+import Remix from '../pages/Remix'
 
 const User = ({
   lang,
@@ -109,31 +110,56 @@ const User = ({
               setShowArtistsBox={setShowArtistsBox}
               playListPages={playListPages}
               innerWidth={innerWidth}
-            /> :
-            <Musics
-              lang={lang}
-              setCurrentMusic={setCurrentMusic}
-              currentMusic={currentMusic}
-              playing={playing}
-              setPlaying={setPlaying}
-              intervalRef={intervalRef}
-              audioRef={audioRef}
-              currentMusicRef={currentMusicRef}
-              duration={duration}
-              setDuration={setDuration}
-              id={id} setId={setId}
-              seconds={seconds}
-              setSeconds={setSeconds}
-              playingId={playingId}
-              setPlayingId={setPlayingId}
-              setPlayList={setPlayList}
-              playList={playList}
-              dummyData={dummyData}
-              setDummyData={setDummyData}
-              setShowArtistsBox={setShowArtistsBox}
-              playListPages={playListPages}
-              innerWidth={innerWidth}
-            />
+            /> : showArtistsBox === 'remix' ?
+              <Remix
+                lang={lang}
+                setCurrentMusic={setCurrentMusic}
+                currentMusic={currentMusic}
+                playing={playing}
+                setPlaying={setPlaying}
+                intervalRef={intervalRef}
+                audioRef={audioRef}
+                currentMusicRef={currentMusicRef}
+                duration={duration}
+                setDuration={setDuration}
+                id={id} setId={setId}
+                seconds={seconds}
+                setSeconds={setSeconds}
+                playingId={playingId}
+                setPlayingId={setPlayingId}
+                setPlayList={setPlayList}
+                playList={playList}
+                dummyData={dummyData}
+                setDummyData={setDummyData}
+                showArtistsBox={showArtistsBox}
+                setShowArtistsBox={setShowArtistsBox}
+                playListPages={playListPages}
+                innerWidth={innerWidth}
+              /> :
+              <Musics
+                lang={lang}
+                setCurrentMusic={setCurrentMusic}
+                currentMusic={currentMusic}
+                playing={playing}
+                setPlaying={setPlaying}
+                intervalRef={intervalRef}
+                audioRef={audioRef}
+                currentMusicRef={currentMusicRef}
+                duration={duration}
+                setDuration={setDuration}
+                id={id} setId={setId}
+                seconds={seconds}
+                setSeconds={setSeconds}
+                playingId={playingId}
+                setPlayingId={setPlayingId}
+                setPlayList={setPlayList}
+                playList={playList}
+                dummyData={dummyData}
+                setDummyData={setDummyData}
+                setShowArtistsBox={setShowArtistsBox}
+                playListPages={playListPages}
+                innerWidth={innerWidth}
+              />
 
       }
 

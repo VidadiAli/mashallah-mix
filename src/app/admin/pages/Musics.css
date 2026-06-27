@@ -309,6 +309,7 @@
 
 .music-actions {
     display: flex;
+    flex-direction: row !important;
     gap: 12px;
     margin-top: 15px;
 }

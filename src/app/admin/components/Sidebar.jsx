@@ -5,7 +5,8 @@ import {
     FaUser,
     FaChartBar,
     FaHome,
-    FaTimes
+    FaTimes,
+    FaCompactDisc
 } from "react-icons/fa";
 
 import './Sidebar.css'
@@ -77,6 +78,11 @@ const Sidebar = ({ innerWidth, showMenu, setShowMenu }) => {
                 <Link to="profile" onClick={() => setShowMenu(false)}>
                     <FaUser />
                     Profile
+                </Link>
+
+                <Link to="remixes" onClick={() => setShowMenu(false)}>
+                    <FaCompactDisc />
+                    Remix
                 </Link>
 
                 <Link onClick={logOut}>

@@ -1358,6 +1358,15 @@
     .main-modal {
         width: 90%;
     }
+
+    .playlist-controller-btns {
+        position: absolute;
+        top: 160px;
+    }
+
+    .edit-playlist {
+        background-color: rgba(139, 92, 246, .68);
+    }
 }
 
 @media(max-width: 450px) {
@@ -1397,6 +1406,10 @@
 
     .music-card-user {
         border-radius: 14px;
+    }
+
+    .playlist-controller-btns {
+        top: 130px;
     }
 }
 

@@ -1,0 +1,496 @@
+.remix-page {
+    padding: 35px;
+}
+
+.remix-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.remix-header h1 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-size: 34px;
+}
+
+.remix-header p {
+    margin-top: 8px;
+    color: #94a3b8;
+}
+
+.new-remix-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 22px;
+
+    border: none;
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    color: white;
+
+    background: linear-gradient(135deg, var(--primary), var(--gold));
+
+    transition: .3s;
+}
+
+.new-remix-btn:hover {
+    transform: translateY(-3px);
+}
+
+.remix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.remix-card {
+
+    position: relative;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, .05);
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    backdrop-filter: blur(18px);
+
+    transition: .35s;
+}
+
+.remix-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: var(--primary);
+
+}
+
+.remix-icon {
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: white;
+    font-size: 28px;
+
+    background: linear-gradient(135deg, var(--primary), var(--gold));
+
+    margin-bottom: 25px;
+
+}
+
+.remix-card h3 {
+
+    color: white;
+    font-size: 20px;
+
+}
+
+.remix-edit-btn {
+
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    color: white;
+
+    background: rgba(255, 255, 255, .08);
+
+}
+
+.remix-edit-btn:hover {
+
+    background: var(--primary);
+
+}
+
+.remix-input {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 12px;
+
+    background: #111827;
+
+    color: white;
+
+}
+
+.remix-actions {
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 25px;
+
+}
+
+.cancel-btn,
+.save-btn {
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.cancel-btn {
+
+    background: #334155;
+    color: white;
+
+}
+
+.save-btn {
+
+    color: white;
+
+    background: linear-gradient(135deg, var(--primary), var(--gold));
+
+}
+
+.remix-modal {
+
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, .55);
+
+    backdrop-filter: blur(10px);
+
+    z-index: 999;
+
+}
+
+.remix-modal-box {
+
+    width: 420px;
+    max-width: 95%;
+
+    padding: 35px;
+
+    border-radius: 24px;
+
+    background: #111827;
+
+}
+
+.remix-modal-box h2 {
+
+    color: white;
+
+    margin-bottom: 25px;
+
+}
+
+.remix-modal-box input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 14px;
+
+    background: #1e293b;
+
+    color: white;
+
+}
+
+
+
+
+
+
+
+
+@media (max-width:1000px) {
+
+    .remix-page {
+        padding: 30px 25px;
+    }
+
+    .remix-header h1 {
+        font-size: 30px;
+    }
+
+    .remix-header p {
+        font-size: 15px;
+    }
+
+    .remix-grid {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 20px;
+    }
+
+}
+
+
+@media (max-width:768px) {
+
+    .remix-page {
+        padding: 25px 18px;
+    }
+
+    .remix-header {
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 22px;
+
+    }
+
+    .remix-header h1 {
+
+        font-size: 26px;
+
+    }
+
+    .remix-header p {
+
+        font-size: 14px;
+
+    }
+
+    .new-remix-btn {
+
+        width: 100%;
+
+        justify-content: center;
+
+        padding: 13px 18px;
+
+        font-size: 15px;
+
+    }
+
+    .remix-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+    }
+
+    .remix-card {
+
+        padding: 24px;
+
+    }
+
+    .remix-icon {
+
+        width: 58px;
+        height: 58px;
+
+        font-size: 24px;
+
+        margin-bottom: 18px;
+
+    }
+
+    .remix-card h3 {
+
+        font-size: 18px;
+
+    }
+
+    .remix-edit-btn {
+
+        width: 38px;
+        height: 38px;
+
+        font-size: 14px;
+
+    }
+
+    .remix-actions {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+    .remix-actions button {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+    .remix-modal-box {
+
+        width: 100%;
+
+        padding: 28px 22px;
+
+        border-radius: 20px;
+
+    }
+
+    .remix-modal-box h2 {
+
+        font-size: 24px;
+
+        margin-bottom: 20px;
+
+    }
+
+    .remix-modal-box input {
+
+        padding: 14px;
+
+        font-size: 15px;
+
+    }
+
+}
+
+
+@media (max-width:480px) {
+
+    .remix-page {
+
+        padding: 20px 14px;
+
+    }
+
+    .remix-header {
+
+        gap: 18px;
+
+    }
+
+    .remix-header h1 {
+
+        font-size: 22px;
+
+        gap: 10px;
+
+    }
+
+    .remix-header p {
+
+        font-size: 13px;
+
+    }
+
+    .new-remix-btn {
+
+        padding: 12px;
+
+        font-size: 14px;
+
+        border-radius: 12px;
+
+    }
+
+    .remix-card {
+
+        padding: 18px;
+
+        border-radius: 18px;
+
+    }
+
+    .remix-icon {
+
+        width: 52px;
+        height: 52px;
+
+        font-size: 20px;
+
+    }
+
+    .remix-card h3 {
+
+        font-size: 17px;
+
+    }
+
+    .remix-edit-btn {
+
+        top: 14px;
+        right: 14px;
+
+        width: 34px;
+        height: 34px;
+
+    }
+
+    .remix-input {
+
+        padding: 12px;
+
+        font-size: 14px;
+
+    }
+
+    .cancel-btn,
+    .save-btn {
+
+        padding: 12px;
+
+        font-size: 14px;
+
+    }
+
+    .remix-modal-box {
+
+        padding: 22px 18px;
+
+    }
+
+}

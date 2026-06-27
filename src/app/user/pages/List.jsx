@@ -2,7 +2,8 @@ import {
     FaHome,
     FaMicrophone,
     FaListUl,
-    FaHeart
+    FaHeart,
+    FaCompactDisc
 } from "react-icons/fa";
 
 import { NavLink } from "react-router-dom";
@@ -90,6 +91,18 @@ const List = ({
                         <FaListUl />
                         <span>
                             {language?.[lang].menu.myLists}
+                        </span>
+                    </NavLink>
+                </li>
+
+                <li onClick={() => {
+                    setShowArtistsBox('remix');
+                    moveMenu();
+                }}>
+                    <NavLink to="/remix">
+                        <FaCompactDisc />
+                        <span>
+                            Remix
                         </span>
                     </NavLink>
                 </li>

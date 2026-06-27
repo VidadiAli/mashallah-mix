@@ -67,7 +67,7 @@
 .artist-name {
     position: absolute;
     left: 50%;
-    bottom: 10px;
+    bottom: -10px;
     transform: translateX(-50%);
 
     font-size: 2rem;
@@ -75,12 +75,13 @@
     color: white;
 
     text-align: center;
-    white-space: nowrap;
+    white-space: wrap;
 
     text-shadow:
         0 0 10px rgba(255, 255, 255, .3),
         0 0 30px rgba(139, 92, 246, .4);
     text-transform: capitalize;
+    width: 100%;
 }
 
 

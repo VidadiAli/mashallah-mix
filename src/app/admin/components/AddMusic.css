@@ -325,7 +325,88 @@
 }
 
 
+.input-box {
 
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    width: 100%;
+
+    margin-top: 22px;
+    grid-column: 2 span;
+
+}
+
+.input-label {
+
+    color: #fff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+}
+
+.remix-select {
+
+    width: 100%;
+    height: 64px;
+
+    padding: 0 22px;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    background: rgba(18, 25, 36, .95);
+
+    color: #fff;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    outline: none;
+
+    transition: .3s;
+
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='white' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 5.646a.5.5 0 0 1 .708 0L8 11.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: right 22px center;
+
+}
+
+.remix-select:hover {
+
+    border-color: #26c6ff;
+
+}
+
+.remix-select:focus {
+
+    border-color: #26c6ff;
+
+    box-shadow:
+        0 0 0 4px rgba(38, 198, 255, .15);
+
+}
+
+.remix-select option {
+
+    background: #111823;
+
+    color: white;
+
+}
 
 
 

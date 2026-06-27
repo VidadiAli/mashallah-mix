@@ -6,6 +6,7 @@ import Musics from '../app/admin/pages/Musics'
 import AddMusic from '../app/admin/components/AddMusic'
 import Profile from '../app/admin/components/Profile'
 import ChangePassword from '../app/admin/components/ChangePassword'
+import Remix from '../app/admin/components/Remix'
 
 const AdminRoutes = () => {
     return (
@@ -14,6 +15,7 @@ const AdminRoutes = () => {
                 <Route index element={<Musics />} />
                 <Route path="add-music" element={<AddMusic />} />
                 <Route path="profile" element={<Profile />} />
+                <Route path="remixes" element={<Remix />} />
                 <Route path='changePassword' element={<ChangePassword />} />
             </Route>
         </Routes>

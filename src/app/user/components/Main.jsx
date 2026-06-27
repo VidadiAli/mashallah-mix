@@ -50,7 +50,7 @@ const Main = () => {
 
         if (!currentMusic) {
             userBox.style.gridColumn =
-                innerWidth <= 1300 ? innerWidth <= 1000 ? "11 span" : "7 span" : "4 span";
+                innerWidth <= 1300 ? innerWidth <= 1100 ? innerWidth <= 1000 ? "11 span" : "8 span" : "7 span" : "4 span";
 
             artistBox.style.display = innerWidth <= 700 ? "block" : "none";
         } else {

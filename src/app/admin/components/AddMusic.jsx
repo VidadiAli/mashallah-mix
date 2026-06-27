@@ -19,6 +19,9 @@ import { useEffect } from "react";
 const AddMusic = ({ item = null, setItem = () => { return null; } }) => {
 
     const [loading, setLoading] = useState(false);
+    const [remixes, setRemixes] = useState([]);
+    const [remix, setRemix] = useState([]);
+
     const [message, setMessage] = useState({
         type: '',
         text: ''
@@ -36,13 +39,14 @@ const AddMusic = ({ item = null, setItem = () => { return null; } }) => {
         musicCover: "",
         musicUrl: "",
         coverPublicId: "",
-        musicPublicId: ""
+        musicPublicId: "",
+        remix: ""
     });
 
 
     useEffect(() => {
         if (item) {
-            setPayload(item);
+            setPayload({ ...item, remix: item?.remix?._id });
             setPictureFile({
                 file: 0,
                 name: item.name + ' - cover.png'
@@ -51,6 +55,7 @@ const AddMusic = ({ item = null, setItem = () => { return null; } }) => {
                 file: 0,
                 name: item.name + ' - music.mp3'
             });
+            setRemix(item?.remix?._id);
         }
     }, [item])
 
@@ -238,7 +243,8 @@ const AddMusic = ({ item = null, setItem = () => { return null; } }) => {
                 musicCover: "",
                 musicUrl: "",
                 musicPublicId: "",
-                coverPublicId: ""
+                coverPublicId: "",
+                remix: ""
             });
 
             setMessage({
@@ -260,6 +266,26 @@ const AddMusic = ({ item = null, setItem = () => { return null; } }) => {
             setLoading(false)
         }
     };
+
+    const getRemixes = async () => {
+
+        try {
+
+            const res = await api.get("/admin/getRemixes");
+
+            setRemixes(res.data.data || []);
+
+        } catch (err) {
+
+            console.log(err);
+
+        }
+
+    };
+
+    useEffect(() => {
+        getRemixes()
+    }, [])
 
     return (
         <section className={`add-music-page ${item && 'edit-music-section'}`}>
@@ -387,6 +413,42 @@ const AddMusic = ({ item = null, setItem = () => { return null; } }) => {
 
                                     </div>
                                 }
+
+                                <div className="input-box">
+
+                                    <label className="input-label">
+                                        Remix
+                                    </label>
+
+                                    <select
+                                        className="remix-select"
+                                        value={payload.remix}
+                                        onChange={(e) =>
+                                            setPayload(prev => ({
+                                                ...prev,
+                                                remix: e.target.value
+                                            }))
+                                        }
+                                    >
+
+                                        <option value="">
+                                            Select Remix
+                                        </option>
+
+                                        {
+                                            remixes.map(remix => (
+                                                <option
+                                                    key={remix._id}
+                                                    value={remix._id}
+                                                >
+                                                    {remix.name}
+                                                </option>
+                                            ))
+                                        }
+
+                                    </select>
+
+                                </div>
 
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', gridColumn: '2 span' }}>
                                     {

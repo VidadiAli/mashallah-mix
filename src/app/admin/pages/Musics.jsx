@@ -156,7 +156,8 @@ const Musics = () => {
                     });
                 }
                 finally {
-                    setLoading(false)
+                    setLoading(false);
+                    setItem(null);
                 }
             }
         }

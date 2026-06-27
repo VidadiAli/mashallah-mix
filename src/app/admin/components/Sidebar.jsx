@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 
 import './Sidebar.css'
+import { FiLogOut } from "react-icons/fi";
 
 const Sidebar = () => {
     return (
@@ -31,6 +32,10 @@ const Sidebar = () => {
                     Profile
                 </Link>
 
+                <Link onClick={() => { localStorage.removeItem('role'); window.location.reload() }}>
+                    <FiLogOut />
+                    Logout
+                </Link>
             </nav>
 
         </aside>

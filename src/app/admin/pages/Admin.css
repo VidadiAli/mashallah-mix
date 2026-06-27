@@ -9,3 +9,9 @@
     overflow-x: hidden;
     min-height: 100vh;
 }
+
+@media(max-width: 1000px) {
+    .admin-content {
+        margin-left: 0px;
+    }
+}

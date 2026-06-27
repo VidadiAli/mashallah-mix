@@ -66,3 +66,24 @@
 .sidebar nav a:last-child {
     margin-top: auto;
 }
+
+@media(max-width: 1000px) {
+    .sidebar {
+        position: absolute;
+        left: -100%;
+        width: 70%;
+        transition: .5s;
+        backdrop-filter: blur(16px);
+    }
+
+    .sidebar-move {
+        left: 0%;
+    }
+}
+
+
+@media(max-width: 500px) {
+    .sidebar {
+        width: 90%;
+    }
+}

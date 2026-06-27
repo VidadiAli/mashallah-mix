@@ -10,9 +10,9 @@ const api = axios.create({
 let isRefreshing = false;
 let refreshPromise = null;
 
-// const getLoginPath = () => {
-//   return "/";
-// };
+const getLoginPath = () => {
+  return "/";
+};
 
 api.interceptors.response.use(
   (res) => res,
@@ -49,13 +49,13 @@ api.interceptors.response.use(
         refreshPromise = null;
 
         try {
-          // await api.post(`/auth/${localStorage.getItem("role") == 'admin' ? 'admin' : 'user'}/logout`);
-          // localStorage.removeItem('role');
+          await api.post(`/auth/${localStorage.getItem("role") == 'admin' ? 'admin' : 'user'}/logout`);
+          localStorage.removeItem('role');
         } catch (e) {
-          // localStorage.removeItem('role');
+          localStorage.removeItem('role');
         }
 
-        // window.location.href = getLoginPath();
+        window.location.href = getLoginPath();
         return Promise.reject(refreshErr);
       }
     }

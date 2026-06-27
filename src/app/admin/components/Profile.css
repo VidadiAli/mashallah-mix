@@ -106,8 +106,8 @@
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
     background-size: 40px 40px;
     opacity: .5;
 }
@@ -159,18 +159,16 @@
     margin: auto;
     border-radius: 50%;
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             var(--primary),
-            var(--secondary)
-        );
+            var(--secondary));
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 32px;
     color: white;
     margin-bottom: 20px;
-    box-shadow: 0 0 40px rgba(139,92,246,.6);
+    box-shadow: 0 0 40px rgba(139, 92, 246, .6);
 }
 
 .profile-header h1 {
@@ -206,7 +204,7 @@
 .input-group input:focus {
     border-color: var(--primary);
     box-shadow:
-        0 0 0 4px rgba(139,92,246,.15);
+        0 0 0 4px rgba(139, 92, 246, .15);
 }
 
 .input-icon {
@@ -237,11 +235,9 @@
     border: none;
     border-radius: var(--radius-md);
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             var(--primary),
-            var(--secondary)
-        ) !important;
+            var(--secondary)) !important;
     color: white;
     font-weight: 700;
     cursor: pointer;
@@ -252,7 +248,7 @@
 .submit-btn:hover {
     transform: translateY(-3px);
     box-shadow:
-        0 15px 30px rgba(139,92,246,.35);
+        0 15px 30px rgba(139, 92, 246, .35);
 }
 
 .message {
@@ -262,13 +258,13 @@
 }
 
 .message.success {
-    background: rgba(34,197,94,.15);
+    background: rgba(34, 197, 94, .15);
     border: 1px solid var(--success);
     color: var(--success-light);
 }
 
 .message.error {
-    background: rgba(239,68,68,.15);
+    background: rgba(239, 68, 68, .15);
     border: 1px solid var(--danger);
     color: #fca5a5;
 }
@@ -301,8 +297,8 @@
     min-width: 220px;
     height: 60px;
     border-radius: var(--radius-md);
-    border: 1px solid rgba(251,191,36,.25);
-    background: rgba(251,191,36,.08);
+    border: 1px solid rgba(251, 191, 36, .25);
+    background: rgba(251, 191, 36, .08);
     color: var(--gold);
     text-decoration: none;
     display: flex;
@@ -315,8 +311,8 @@
 
 .password-link:hover {
     transform: translateY(-3px);
-    background: rgba(251,191,36,.15);
-    box-shadow: 0 15px 30px rgba(251,191,36,.18);
+    background: rgba(251, 191, 36, .15);
+    box-shadow: 0 15px 30px rgba(251, 191, 36, .18);
 }
 
 .profile-card {
@@ -330,17 +326,17 @@
 @keyframes pulseGlow {
 
     0% {
-        box-shadow: 0 0 25px rgba(139,92,246,.4);
+        box-shadow: 0 0 25px rgba(139, 92, 246, .4);
     }
 
     50% {
         box-shadow:
-            0 0 60px rgba(139,92,246,.8),
-            0 0 120px rgba(6,182,212,.25);
+            0 0 60px rgba(139, 92, 246, .8),
+            0 0 120px rgba(6, 182, 212, .25);
     }
 
     100% {
-        box-shadow: 0 0 25px rgba(139,92,246,.4);
+        box-shadow: 0 0 25px rgba(139, 92, 246, .4);
     }
 
 }
@@ -360,24 +356,115 @@
 }
 
 
-@media (max-width: 768px) {
+
+
+@media (max-width: 1000px) {
+
     .profile-page {
-        padding: 20px;
+        padding: 30px 20px;
+    }
+
+    .profile-card {
+        max-width: 100%;
+        padding: 60px 24px !important;
+    }
+
+    .profile-header {
+        margin-bottom: 24px;
+    }
+
+    .profile-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+        margin-bottom: 16px;
+    }
+
+    .profile-header h1 {
+        font-size: 28px;
+    }
+
+    .profile-header p {
+        font-size: 15px;
     }
 
     .profile-form {
-        padding: 18px;
-    }
-
-    .profile-form button {
+        gap: 18px;
+        padding: 20px;
         width: 100%;
     }
 
-     .profile-actions {
-        flex-direction: column;
+    .input-group input {
+        height: 54px;
+        padding: 0 50px 0 46px;
+        font-size: 15px;
+    }
+
+    .input-icon {
+        left: 16px;
+        font-size: 16px;
+    }
+
+    .eye-btn {
+        right: 16px;
+        font-size: 17px;
+    }
+
+    .submit-btn {
+        height: 54px;
+        padding: 0 28px;
+        font-size: 15px;
+    }
+
+    .profile-actions {
+        gap: 12px;
     }
 
     .password-link {
+        min-width: 200px;
+        height: 54px;
+        font-size: 15px;
+        padding: 0 20px;
+    }
+
+    .message {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .circle-1 {
+        width: 260px;
+        height: 260px;
+    }
+
+    .circle-2 {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+
+@media(max-width: 500px) {
+    .profile-form {
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .profile-card {
+        padding: 30px 10px !important;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-actions button,
+    .profile-actions a {
         width: 100%;
+    }
+
+    .eye-btn{
+        padding: 0px !important;
     }
 }

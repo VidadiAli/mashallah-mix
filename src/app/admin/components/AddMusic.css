@@ -285,25 +285,25 @@
     text-align: center;
 }
 
-.old-media{
+.old-media {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 20px;
     gap: 20px;
 }
 
-.audio-preview{
+.audio-preview {
     grid-column: 1 span;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.old-music{
+.old-music {
     width: 220px;
 }
 
-.cover-preview{
+.cover-preview {
     grid-column: 1 span;
     display: flex;
     align-items: center;
@@ -324,65 +324,125 @@
     }
 }
 
-@media (max-width: 992px) {
-    .add-music-form {
-        grid-template-columns: 1fr;
+
+
+
+
+
+@media (max-width: 1000px) {
+
+    .edit-music-section {
+        left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .add-music-page {
+        padding: 20px 80px;
     }
 
     .add-music-card {
-        padding: 25px;
+        width: 100%;
+        padding: 28px;
     }
 
     .page-header h1 {
         font-size: 30px;
     }
+
+    .add-music-form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .upload-box,
+    .youtube-toggle,
+    .input-group,
+    .submit-btn {
+        width: 100%;
+    }
+
+    .old-media {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .cover-preview,
+    .audio-preview {
+        justify-content: center;
+    }
+
+    .old-music {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .add-music-form>div:last-child>div:last-child {
+        display: flex !important;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .add-music-form>div:last-child>div:last-child .submit-btn {
+        width: 100%;
+    }
+
 }
 
-@media (max-width: 768px) {
-    .add-music-page {
-        padding: 20px;
-    }
 
-    .header-icon {
-        width: 75px;
-        height: 75px;
-        font-size: 28px;
-    }
 
-    .cover-preview img {
-        width: 200px;
-        height: 200px;
-    }
-}
+@media (max-width: 500px) {
 
-@media (max-width: 480px) {
-    .add-music-page {
+    .edit-music-section {
         padding: 12px;
     }
+
+    .add-music-page {
+        padding: 10px;
+    }
+
 
     .add-music-card {
         padding: 18px;
         border-radius: 20px;
     }
 
+    .header-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 26px;
+    }
+
     .page-header h1 {
         font-size: 24px;
     }
 
+    .page-header p {
+        font-size: 14px;
+    }
+
     .input-group input {
-        height: 55px;
+        height: 52px;
+        font-size: 14px;
     }
 
     .upload-box {
         min-height: 140px;
     }
 
-    .cover-preview img {
-        width: 160px;
-        height: 160px;
+    .upload-box svg {
+        font-size: 30px;
+    }
+
+    .file-name {
+        padding: 0 10px;
+        font-size: 13px;
     }
 
     .submit-btn {
-        height: 58px;
+        height: 54px;
+        font-size: 14px;
     }
+
 }

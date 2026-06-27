@@ -124,7 +124,7 @@ const Musics = () => {
     const deleteMusic = (music) => {
         setAlert({
             type: 'success',
-            response: 'istifadəçini silməyə əminsiz?',
+            response: 'Bu parçanı silməyə əminsiz?',
             isQuestion: true
         });
         setItem(music);
@@ -143,7 +143,7 @@ const Musics = () => {
 
                     setAlert({
                         type: 'success',
-                        response: 'İstifadəçi uğurla silindi',
+                        response: 'Parça uğurla silindi',
                         isQuestion: false
                     });
 
